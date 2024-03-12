@@ -1,5 +1,5 @@
 ## PinInputMendix
-[My widget description]
+A small mendix widget.
 
 ## Features
 [feature highlights]
