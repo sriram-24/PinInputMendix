@@ -4,13 +4,16 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { DynamicValue, EditableValue } from "mendix";
+import { Big } from "big.js";
 
 export interface PinInputMendixContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    sampleText: string;
+    pinInputAttribute: EditableValue<string>;
+    inputCount: DynamicValue<Big>;
 }
 
 export interface PinInputMendixPreviewProps {
@@ -22,5 +25,6 @@ export interface PinInputMendixPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    sampleText: string;
+    pinInputAttribute: string;
+    inputCount: string;
 }

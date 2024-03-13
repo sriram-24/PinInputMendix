@@ -1,20 +1,20 @@
-import { createElement } from "react";
-import { shallow, ShallowWrapper } from "enzyme";
+// import { createElement } from "react";
+// import { shallow, ShallowWrapper } from "enzyme";
 
-import { HelloWorldSample, HelloWorldSampleProps } from "../HelloWorldSample";
+// import { HelloWorldSample, HelloWorldSampleProps } from "../PinInput";
 
-describe("HelloWorldSample", () => {
-    const createHelloWorld = (props: HelloWorldSampleProps): ShallowWrapper => shallow(<HelloWorldSample {...props} />);
+// describe("HelloWorldSample", () => {
+//     const createHelloWorld = (props: HelloWorldSampleProps): ShallowWrapper => shallow(<HelloWorldSample {...props} />);
 
-    it("should render the structure correctly", () => {
-        const helloWorldProps: HelloWorldSampleProps = {
-            sampleText: "World"
-        };
+//     it("should render the structure correctly", () => {
+//         const helloWorldProps: HelloWorldSampleProps = {
+//             sampleText: "World"
+//         };
 
-        const helloWorld = createHelloWorld(helloWorldProps);
+//         const helloWorld = createHelloWorld(helloWorldProps);
 
-        expect(helloWorld.equals(<div className="widget-hello-world">Hello {helloWorldProps.sampleText}</div>)).toEqual(
-            true
-        );
-    });
-});
+//         expect(helloWorld.equals(<div className="widget-hello-world">Hello {helloWorldProps.sampleText}</div>)).toEqual(
+//             true
+//         );
+//     });
+// });

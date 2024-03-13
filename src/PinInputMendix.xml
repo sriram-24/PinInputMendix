@@ -8,10 +8,26 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
+            <propertyGroup caption="Data Source">
+                <property key="pinInputAttribute" type="attribute">
+                    <caption>Attribute</caption>
+                    <description>Attribute to store the value.</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
             </property>
+            </propertyGroup>
+            <propertyGroup caption="test">
+                <!-- <property key="inputCount" type="expression">
+	            <caption>Input Count</caption>
+	            <description>Number of input for pin.</description>
+                <returnType type="Integer" /> -->
+                <property key="inputCount" type="expression" defaultValue="3">
+	                <caption>Input count</caption>
+	                <description>Number of input for pin.</description>
+	                <returnType type="Integer" />
+                </property>
+            </propertyGroup>
         </propertyGroup>
     </properties>
 </widget>
