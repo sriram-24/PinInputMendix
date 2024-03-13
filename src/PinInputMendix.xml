@@ -17,17 +17,71 @@
                     </attributeTypes>
             </property>
             </propertyGroup>
-            <propertyGroup caption="test">
-                <!-- <property key="inputCount" type="expression">
-	            <caption>Input Count</caption>
-	            <description>Number of input for pin.</description>
-                <returnType type="Integer" /> -->
+            <propertyGroup caption="Common">
+                
                 <property key="inputCount" type="expression" defaultValue="3">
 	                <caption>Input count</caption>
 	                <description>Number of input for pin.</description>
 	                <returnType type="Integer" />
                 </property>
-            </propertyGroup>
+                <property key="placeholder" type="textTemplate" >
+                    <caption>Placholder</caption>
+                    <description>Placeholder to display in input.</description>
+                    <translations>
+                        <translation lang="en_US">○</translation>
+                        <translation lang="ar_BH">○</translation>
+		
+	                </translations>
+                </property>
+              	<property key="inputType" type="enumeration" defaultValue="numeric">
+		            <caption>Input Type</caption>
+		            <description>Input type is to restrict other characters than specified.</description>
+		            <enumerationValues>
+			            <enumerationValue key="numeric">Numeric</enumerationValue>
+			            <enumerationValue key="alphanumeric">Alphanumeric</enumerationValue>
+			            <enumerationValue key="alphabetic">Alphabetic</enumerationValue>
+		            </enumerationValues>
+	            </property>
+                <property key="otpMode" type="enumeration" defaultValue="No">
+		            <caption>OTP Mode</caption>
+		            <description>Specifies whether autocomplete otp from messages.</description>
+		            <enumerationValues>
+			            <enumerationValue key="Yes">Yes</enumerationValue>
+			            <enumerationValue key="No">No</enumerationValue>
+			            
+		            </enumerationValues>
+	            </property>
+                <property key="inputMask" type="expression" defaultValue="false">
+	                <caption>Input Mask</caption>
+	                <description>Hides the input entered in the input.</description>
+	                <returnType type="Boolean" />
+                </property>
+                <property key="rtl" type="expression" defaultValue="false">
+	                <caption>Direction</caption>
+	                <description>Specifies the direction of input, whether from ltr or rtl. Set to true if the direction is rtl.</description>
+	                <returnType type="Boolean" />
+                </property>
+                <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
+	                <caption>Clear button enabled?</caption>
+	                <description>Show clear button or not</description>
+                </property>
+                
+            </propertyGroup>    
+        </propertyGroup>
+        <propertyGroup caption="Clear Button">
+            <property key="clearButtonLabel" type="textTemplate" >
+                    <caption>Label</caption>
+                    <description>Label string for clear button.</description>
+                    <translations>
+                        <translation lang="en_US">Clear</translation>
+                        <translation lang="ar_BH">Clear</translation>
+		
+	                </translations>
+                </property>
+                <property key="clearButtonIcon" type="icon" required="false">
+	                <caption>Icon</caption>
+	                <description>Clear button icon</description>
+                </property>
         </propertyGroup>
     </properties>
 </widget>

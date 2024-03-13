@@ -1,4 +1,5 @@
 import { PinInputMendixPreviewProps } from "../typings/PinInputMendixProps";
+import {hidePropertiesIn} from '@mendix/pluggable-widgets-tools'
 
 export type Platform = "web" | "desktop";
 
@@ -100,15 +101,18 @@ export type PreviewProps =
     | DatasourceProps;
 
 export function getProperties(
-    _values: PinInputMendixPreviewProps,
+    values: PinInputMendixPreviewProps,
     defaultProperties: Properties /* , target: Platform*/
 ): Properties {
     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
-    /* Example
-    if (values.myProperty === "custom") {
-        delete defaultProperties.properties.myOtherProperty;
-    }
-    */
+    // Example
+    // if (values.myProperty === "custom") {
+    //     delete defaultProperties.properties.myOtherProperty;
+    // }
+    
+   if(!values.isClearButtonEnabled){
+    hidePropertiesIn(defaultProperties,values,["clearButtonLabel", "clearButtonIcon"])
+   }
     return defaultProperties;
 }
 

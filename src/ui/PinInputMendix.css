@@ -1,6 +1,51 @@
 /*
 Place your custom CSS here
 */
-.widget-hello-world {
 
-}
+.pin-input-root{
+    display: flex;
+    gap: 10px;
+  }
+   .pin-input-root .pin-input{
+  
+    
+    border: 1px solid #d5d5d5;
+    text-align: center;
+    border-color: #d5d5d5 !important;
+    outline: transparent 2px ;
+    outline-offset: 2px;
+    border-radius: 10px;
+    -webkit-background-clip: padding-box; 
+    -moz-background-clip:    padding; 
+    background-clip:         padding-box;
+   }
+  
+   .pin-input-root .pin-input.xs {
+    width: 24px;
+    height: 24px;
+  }
+  .pin-input-root .pin-input.sm {
+    width: 32px;
+    height: 32px;
+  }
+  .pin-input-root .pin-input.md {
+    width: 40px;
+    height: 40px;
+  }
+  .pin-input-root .pin-input.lg {
+    width: 48px;
+    height: 48px;
+  }
+  
+   .pin-input-root .input-field-wrapper{
+    display: flex;
+    gap: 10px;
+   }
+   .pin-input:focus{
+    outline-color: #63acf7 !important;
+    border-color: #63acf7 !important;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(99,172,247,1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(99,172,247,1);
+  box-shadow: 0px 0px 5px 0px rgba(99,172,247,1);
+    transition: all .4s ease;
+   }
