@@ -1,13 +1,15 @@
 import {createElement,Fragment, CSSProperties} from 'react'
-import {EditableValue, DynamicValue, ValueStatus, WebIcon} from 'mendix'
+import { DynamicValue, ValueStatus, WebIcon, ActionValue} from 'mendix'
 import { normalizeProps, useMachine } from '@zag-js/react';
 import * as pinInput from '@zag-js/pin-input'
 import classNames from 'classnames';
-import { InputTypeEnum, OtpModeEnum } from 'typings/PinInputMendixProps';
+import { InputStyleEnum, InputTypeEnum, OtpModeEnum } from 'typings/PinInputMendixProps';
 
 
-interface PinInputProps{
-    pinInputAttribute:EditableValue<string>,
+
+
+export interface PinInputProps{
+    onChangeValue:(value : string) => void,
     inputCount : DynamicValue<Big>,
     style:CSSProperties | undefined,
     pinClass:string,
@@ -19,12 +21,21 @@ interface PinInputProps{
     inputMask: DynamicValue<boolean>
     dir:DynamicValue<boolean>,
     clearButtonEnabled : boolean
-    clearLabel : DynamicValue<string> ,
-    clearIcon : DynamicValue<WebIcon> | undefined
+    clearLabel : DynamicValue<string> | undefined ,
+    clearIcon : DynamicValue<WebIcon> | undefined,
+    inputSize : InputStyleEnum,
+    blurOnComplete : boolean,
+    onChangeAction: ActionValue | undefined,
+    onCompleteAction: ActionValue | undefined
 }
 
 
-function PinInput({ inputCount, pinClass, style, tabIndex, name, placeholder, inputType, otpmode, inputMask, dir, clearIcon, clearLabel}:PinInputProps) {
+const PinInput = ({ inputCount, pinClass, style, tabIndex, name, placeholder, inputType, otpmode, inputMask, dir, clearIcon, clearLabel, inputSize, onChangeValue, blurOnComplete, onChangeAction,onCompleteAction }:PinInputProps) =>{
+  
+  const updatePinAttributeValue = (value: string) => {
+    onChangeValue(value)
+  }
+  
   const [state, send] = useMachine(
     pinInput.machine({
        id: name,
@@ -33,12 +44,21 @@ function PinInput({ inputCount, pinClass, style, tabIndex, name, placeholder, in
        otp: otpmode === "Yes" ? true : false,
        mask : inputMask.value,
        dir : dir.value ? "rtl" : "ltr",
+      blurOnComplete: blurOnComplete,
+       onValueChange(details : pinInput.ValueChangeDetails) {
+          updatePinAttributeValue(details.valueAsString)
+          onChangeAction?.execute()
+       },
+       onValueComplete(_details) {
+         onCompleteAction?.execute()
+        console.log("complete")
+       },
        
       })
     )
   
   const api = pinInput.connect(state, send, normalizeProps)
-// api.setValue()
+
   const rootClasses = classNames("pin-input-root",pinClass)
 
   return (
@@ -48,18 +68,18 @@ function PinInput({ inputCount, pinClass, style, tabIndex, name, placeholder, in
           inputCount.status == ValueStatus.Available ? 
             Array.from<string>({length:inputCount.value.toNumber()})
               .fill("")
-              .map((_item:string,index:number)=>  <input {...api.getInputProps({ index: index })} className='pin-input md' />)
+              .map((_item:string,index:number)=>  <input {...api.getInputProps({ index: index })} className={`pin-input ${inputSize} `} />)
           :<Fragment></Fragment>
         }
       </div>
-      <button onClick={api.clearValue}>
+      <button onClick={api.clearValue} className='pin-clear-btn'>
        {
         clearIcon?.value ? 
         clearIcon?.value?.type == 'glyph' || clearIcon?.value?.type == 'icon'  ? <span className={`${clearIcon.value.iconClass}`}></span> : <img src={`${clearIcon?.value?.iconUrl}`}></img>
         : <Fragment></Fragment>
        }
        {
-        clearLabel.value ? clearLabel.value : <Fragment></Fragment>
+        clearLabel?.value ? clearLabel.value : <Fragment></Fragment>
        }
       </button>
     </div>

@@ -49,3 +49,15 @@ Place your custom CSS here
   box-shadow: 0px 0px 5px 0px rgba(99,172,247,1);
     transition: all .4s ease;
    }
+
+   .pin-input-root .pin-clear-btn{
+    background: #fff;
+    outline: 0;
+    border-radius: 50px;
+    border: 1px solid #d5d5d5;
+    padding: 8px 14px;
+    border-radius: 8px;
+   }
+   .pin-input-root .pin-clear-btn:hover{
+    background: #f3f3f3;
+   }

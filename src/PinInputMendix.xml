@@ -3,7 +3,7 @@
         supportedPlatform="Web"
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>Pin Input Mendix</name>
+    <name>Pin Input</name>
     <description>My widget description</description>
     <icon/>
     <properties>
@@ -61,15 +61,28 @@
 	                <description>Specifies the direction of input, whether from ltr or rtl. Set to true if the direction is rtl.</description>
 	                <returnType type="Boolean" />
                 </property>
+                <property key="blurOnComplete" type="boolean" defaultValue="false">
+	                <caption>Blur on complete</caption>
+	                <description>Exits the input when all the fields are filled.</description>
+                </property>
                 <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
 	                <caption>Clear button enabled?</caption>
 	                <description>Show clear button or not</description>
                 </property>
-                
+                <property key="inputStyle" type="enumeration" defaultValue="md">
+		            <caption>Input Size</caption>
+		            <description>Specifies the input size. eg : sm - for small input </description>
+		            <enumerationValues>
+			            <enumerationValue key="xs">xs</enumerationValue>
+			            <enumerationValue key="sm">sm</enumerationValue>
+                        <enumerationValue key="md">md</enumerationValue>
+                        <enumerationValue key="lg">lg</enumerationValue>
+		            </enumerationValues>
+                </property>
             </propertyGroup>    
         </propertyGroup>
         <propertyGroup caption="Clear Button">
-            <property key="clearButtonLabel" type="textTemplate" >
+            <property key="clearButtonLabel" type="textTemplate" required="false" >
                     <caption>Label</caption>
                     <description>Label string for clear button.</description>
                     <translations>
@@ -82,6 +95,16 @@
 	                <caption>Icon</caption>
 	                <description>Clear button icon</description>
                 </property>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="onChangeAction" type="action">
+                <caption>On Change</caption>
+                <description>Action to be executed on changing the pin input.</description>
+            </property>
+            <property key="onCompleteAction" type="action">
+                <caption>On Complete</caption>
+                <description>Action to be executed on completing the pin input.</description>
+            </property>
         </propertyGroup>
     </properties>
 </widget>

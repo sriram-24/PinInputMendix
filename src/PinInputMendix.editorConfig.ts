@@ -1,5 +1,7 @@
 import { PinInputMendixPreviewProps } from "../typings/PinInputMendixProps";
-import {hidePropertiesIn} from '@mendix/pluggable-widgets-tools'
+import {hidePropertiesIn} from '@mendix/pluggable-widgets-tools';
+const logo: string = require("./assets/pin_input_image.svg").default;
+
 
 export type Platform = "web" | "desktop";
 
@@ -131,13 +133,15 @@ export function getProperties(
 //     return errors;
 // }
 
-// export function getPreview(values: PinInputMendixPreviewProps, isDarkMode: boolean, version: number[]): PreviewProps {
-//     // Customize your pluggable widget appearance for Studio Pro.
-//     return {
-//         type: "Container",
-//         children: []
-//     }
-// }
+export function getPreview(): PreviewProps {
+    // Customize your pluggable widget appearance for Studio Pro.
+    const image = logo
+    return {
+        type:'Image',
+        document:decodeURIComponent(image.replace("data:image/svg+xml,", "")),
+        width:100
+    }
+}
 
 // export function getCustomCaption(values: PinInputMendixPreviewProps, platform: Platform): string {
 //     return "PinInputMendix";

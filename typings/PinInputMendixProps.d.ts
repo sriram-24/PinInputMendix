@@ -4,12 +4,14 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { DynamicValue, EditableValue, WebIcon } from "mendix";
+import { ActionValue, DynamicValue, EditableValue, WebIcon } from "mendix";
 import { Big } from "big.js";
 
 export type InputTypeEnum = "numeric" | "alphanumeric" | "alphabetic";
 
 export type OtpModeEnum = "Yes" | "No";
+
+export type InputStyleEnum = "xs" | "sm" | "md" | "lg";
 
 export interface PinInputMendixContainerProps {
     name: string;
@@ -23,9 +25,13 @@ export interface PinInputMendixContainerProps {
     otpMode: OtpModeEnum;
     inputMask: DynamicValue<boolean>;
     rtl: DynamicValue<boolean>;
+    blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
-    clearButtonLabel: DynamicValue<string>;
+    inputStyle: InputStyleEnum;
+    clearButtonLabel?: DynamicValue<string>;
     clearButtonIcon?: DynamicValue<WebIcon>;
+    onChangeAction?: ActionValue;
+    onCompleteAction?: ActionValue;
 }
 
 export interface PinInputMendixPreviewProps {
@@ -44,7 +50,11 @@ export interface PinInputMendixPreviewProps {
     otpMode: OtpModeEnum;
     inputMask: string;
     rtl: string;
+    blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
+    inputStyle: InputStyleEnum;
     clearButtonLabel: string;
     clearButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
+    onChangeAction: {} | null;
+    onCompleteAction: {} | null;
 }
