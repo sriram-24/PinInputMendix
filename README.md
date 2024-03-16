@@ -1,24 +1,22 @@
-## PinInputMendix
-A small mendix widget.
+# Pin Input
+
+Pin Input is a widget used for enterning sequence of inputs in a separate input boxes. This widget will provide a modern look and feel for enterning the OTP or PIN numbers instead of using a plain input text. It is built on top of a [@zagjs/pin-input](https://zagjs.com/components/react/pin-input) react component.
 
 ## Features
-[feature highlights]
 
-## Usage
-[step by step instructions]
+- Modern look and feel.
+- Secure input with input mask.
+- Customizable input count.
+- Onchange and Oncomplete events help to trigger mendix actions.
+- RTL Support.
 
-## Demo project
-[link to sandbox]
+## Installing
+Download the content from mendix marketplace
+or
+[Build from source](https://github.com/sriram-24/PinInputMendix)
 
-## Issues, suggestions and feature requests
-[link to GitHub issues]
+## Usage 
 
-## Development and contribution
-
-1. Install NPM package dependencies by using: `npm install`. If you use NPM v7.x.x, which can be checked by executing `npm -v`, execute: `npm install --legacy-peer-deps`.
-1. Run `npm start` to watch for code changes. On every change:
-    - the widget will be bundled;
-    - the bundle will be included in a `dist` folder in the root directory of the project;
-    - the bundle will be included in the `deployment` and `widgets` folder of the Mendix test project.
-
-[specify contribution]
+This text you see here is *actually- written in Markdown! To get a feel
+for Markdown's syntax, type some text into the left window and
+watch the results in the right.
