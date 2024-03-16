@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "config": {
-    "projectPath": "./tests/testProject",
+    "projectPath": "C:/Users/srira/Documents/Mendix/Testing-widgets",
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },

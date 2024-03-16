@@ -1,25 +1,21 @@
-import { createElement, ReactNode, Component, Fragment } from "react";
-
+import { createElement, ReactNode, Component, Fragment} from "react";
 import { PinInputMendixContainerProps } from "../typings/PinInputMendixProps";
-
-
 import "./ui/PinInputMendix.css";
 import PinInput from "./components/PinInput";
 import { Alert } from "./components/Alert";
 
-
-
 export class PinInputMendix extends Component<PinInputMendixContainerProps> {
     
     private readonly onUpdateHandle = this.onUpdate.bind(this);
-    
     
     private onUpdate(value: string): void {
         this.props.pinInputAttribute.setValue(value);
     }
 
   render() :ReactNode{
+
     const validationFeedback = this.props.pinInputAttribute.validation
+
     return (
         <Fragment>
             <PinInput 
@@ -41,10 +37,13 @@ export class PinInputMendix extends Component<PinInputMendixContainerProps> {
                 inputSize={this.props.inputStyle}
                 onChangeAction={this.props.onChangeAction}
                 onCompleteAction={this.props.onCompleteAction}
+                pinInputAttribute={this.props.pinInputAttribute}
             />
+
         <Alert >
             {validationFeedback}
         </Alert>
+
         </Fragment>
     )
     

@@ -118,20 +118,34 @@ export function getProperties(
     return defaultProperties;
 }
 
-// export function check(_values: PinInputMendixPreviewProps): Problem[] {
-//     const errors: Problem[] = [];
-//     // Add errors to the above array to throw errors in Studio and Studio Pro.
-//     /* Example
-//     if (values.myProperty !== "custom") {
-//         errors.push({
-//             property: `myProperty`,
-//             message: `The value of 'myProperty' is different of 'custom'.`,
-//             url: "https://github.com/myrepo/mywidget"
-//         });
-//     }
-//     */
-//     return errors;
-// }
+export function check(values: PinInputMendixPreviewProps): Problem[] {
+    const errors: Problem[] = [];
+    // Add errors to the above array to throw errors in Studio and Studio Pro.
+    /* Example
+    if (values.myProperty !== "custom") {
+        errors.push({
+            property: `myProperty`,
+            message: `The value of 'myProperty' is different of 'custom'.`,
+            url: "https://github.com/myrepo/mywidget"
+        });
+    }
+    */
+   const clearButtonError ={
+    property:"clearButtonLabel",
+    message:`Either the clear button label or icon should be present if the clear button is enabled.`
+} 
+   if(values.isClearButtonEnabled){
+    if((values.clearButtonLabel == null || values.clearButtonLabel == "") || (values.clearButtonIcon == undefined)){
+        errors.push(clearButtonError)
+    }
+    if(values.clearButtonIcon){
+        errors.find((val,index) => {
+            val.property == clearButtonError.property ? errors.splice(index,1) : null
+        })
+    }
+   }
+    return errors;
+}
 
 export function getPreview(): PreviewProps {
     // Customize your pluggable widget appearance for Studio Pro.
@@ -143,6 +157,6 @@ export function getPreview(): PreviewProps {
     }
 }
 
-// export function getCustomCaption(values: PinInputMendixPreviewProps, platform: Platform): string {
-//     return "PinInputMendix";
-// }
+export function getCustomCaption(_values: PinInputMendixPreviewProps, _platform: Platform): string {
+    return "Pin Input";
+}
