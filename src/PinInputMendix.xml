@@ -24,7 +24,7 @@
 	                <description>Number of input for pin.</description>
 	                <returnType type="Integer" />
                 </property>
-                <property key="placeholder" type="textTemplate" >
+                <property key="placeholder" type="textTemplate" required="false">
                     <caption>Placholder</caption>
                     <description>Placeholder to display in input.</description>
                     <translations>
@@ -42,44 +42,47 @@
 			            <enumerationValue key="alphabetic">Alphabetic</enumerationValue>
 		            </enumerationValues>
 	            </property>
-                <property key="otpMode" type="enumeration" defaultValue="No">
-		            <caption>OTP Mode</caption>
-		            <description>Specifies whether autocomplete otp from messages.</description>
-		            <enumerationValues>
-			            <enumerationValue key="Yes">Yes</enumerationValue>
-			            <enumerationValue key="No">No</enumerationValue>
-			            
-		            </enumerationValues>
-	            </property>
                 <property key="inputMask" type="expression" defaultValue="false">
 	                <caption>Input Mask</caption>
 	                <description>Hides the input entered in the input.</description>
 	                <returnType type="Boolean" />
                 </property>
-                <property key="rtl" type="expression" defaultValue="false">
-	                <caption>Direction</caption>
-	                <description>Specifies the direction of input, whether from ltr or rtl. Set to true if the direction is rtl.</description>
-	                <returnType type="Boolean" />
-                </property>
-                <property key="blurOnComplete" type="boolean" defaultValue="false">
-	                <caption>Blur on complete</caption>
-	                <description>Exits the input when all the fields are filled.</description>
-                </property>
-                <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
-	                <caption>Clear button enabled?</caption>
-	                <description>Show clear button or not</description>
-                </property>
-                <property key="inputStyle" type="enumeration" defaultValue="md">
-		            <caption>Input Size</caption>
-		            <description>Specifies the input size. eg : sm - for small input </description>
-		            <enumerationValues>
-			            <enumerationValue key="xs">xs</enumerationValue>
-			            <enumerationValue key="sm">sm</enumerationValue>
-                        <enumerationValue key="md">md</enumerationValue>
-                        <enumerationValue key="lg">lg</enumerationValue>
-		            </enumerationValues>
-                </property>
+                
             </propertyGroup>    
+        </propertyGroup>
+        <propertyGroup caption="Advanced">
+            <property key="otpMode" type="enumeration" defaultValue="No">
+                <caption>OTP Mode</caption>
+                <description>Specifies whether autocomplete otp from messages.</description>
+                <enumerationValues>
+                    <enumerationValue key="Yes">Yes</enumerationValue>
+                    <enumerationValue key="No">No</enumerationValue>
+                    
+                </enumerationValues>
+            </property>
+            <property key="rtl" type="expression" defaultValue="false">
+                <caption>Direction</caption>
+                <description>Specifies the direction of input, whether from ltr or rtl. Set to true if the direction is rtl.</description>
+                <returnType type="Boolean" />
+            </property>
+            <property key="blurOnComplete" type="boolean" defaultValue="false">
+                <caption>Blur on complete</caption>
+                <description>Exits the input when all the fields are filled.</description>
+            </property>
+            <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
+                <caption>Clear button enabled?</caption>
+                <description>Show clear button or not</description>
+            </property>
+            <property key="inputStyle" type="enumeration" defaultValue="md">
+                <caption>Input Size</caption>
+                <description>Specifies the input size. eg : sm - for small input </description>
+                <enumerationValues>
+                    <enumerationValue key="xs">xs</enumerationValue>
+                    <enumerationValue key="sm">sm</enumerationValue>
+                    <enumerationValue key="md">md</enumerationValue>
+                    <enumerationValue key="lg">lg</enumerationValue>
+                </enumerationValues>
+            </property>
         </propertyGroup>
         <propertyGroup caption="Clear Button">
             <property key="clearButtonLabel" type="textTemplate" required="false" >

@@ -5,6 +5,7 @@ import * as pinInput from '@zag-js/pin-input'
 import classNames from 'classnames';
 import { InputStyleEnum, InputTypeEnum, OtpModeEnum } from 'typings/PinInputMendixProps';
 import { Alert } from './Alert';
+import {updateInputValues} from '../utils/utils'
 
 export interface PinInputProps{
     onChangeValue:(value : string) => void,
@@ -14,7 +15,7 @@ export interface PinInputProps{
     pinClass:string,
     tabIndex: number | undefined,
     name: string,
-    placeholder:DynamicValue<string>,
+    placeholder:DynamicValue<string> | undefined,
     inputType : InputTypeEnum,
     otpmode : OtpModeEnum,
     inputMask: DynamicValue<boolean>
@@ -57,27 +58,7 @@ const PinInput = (
 		padding:"8px",
 		margin:0
 	} 
-  const updateInputValues = (
-	count : number | undefined, 
-	defaulValues? : Array<string>, 
-	defaultString? : string | undefined
-	) : Array<string>  => {
-    const vvalueArray =  Array.from<string>({length:count ? count : 0}).fill("")
-    
-    if(defaultString){
-      const arra = defaultString.split("")
-      console.log("edi",arra);
-      
-      arra.forEach((item,index)=> vvalueArray[index] = item)
-      return vvalueArray
-    }
-    if(defaulValues){
-      defaulValues.forEach((item, index) => vvalueArray[index] = item)
-     return vvalueArray
-   }
-    return vvalueArray
-
-  }
+  
 
   const [pin, setPin] = useState<string[]>(updateInputValues(inputCount.value?.toNumber()))
 
@@ -103,8 +84,8 @@ const PinInput = (
        
       }),{
         context:{
-          placeholder: placeholder.value ? placeholder.value.toString() : "○" ,
-          value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute.value?.toString()),
+          placeholder: placeholder?.value ? placeholder.value.toString() : "○" ,
+          value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute.value?.toString(), inputType),
           mask : inputMask.value,
           dir : dir.value ? "rtl" : "ltr",
         }

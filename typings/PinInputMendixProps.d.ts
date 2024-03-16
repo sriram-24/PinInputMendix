@@ -20,10 +20,10 @@ export interface PinInputMendixContainerProps {
     tabIndex?: number;
     pinInputAttribute: EditableValue<string>;
     inputCount: DynamicValue<Big>;
-    placeholder: DynamicValue<string>;
+    placeholder?: DynamicValue<string>;
     inputType: InputTypeEnum;
-    otpMode: OtpModeEnum;
     inputMask: DynamicValue<boolean>;
+    otpMode: OtpModeEnum;
     rtl: DynamicValue<boolean>;
     blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
@@ -47,8 +47,8 @@ export interface PinInputMendixPreviewProps {
     inputCount: string;
     placeholder: string;
     inputType: InputTypeEnum;
-    otpMode: OtpModeEnum;
     inputMask: string;
+    otpMode: OtpModeEnum;
     rtl: string;
     blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
