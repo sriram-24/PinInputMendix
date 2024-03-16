@@ -9,7 +9,7 @@ import {updateInputValues} from '../utils/utils'
 
 export interface PinInputProps{
     onChangeValue:(value : string) => void,
-    pinInputAttribute : EditableValue<string>,
+    pinInputAttribute ?: EditableValue<string>,
     inputCount : DynamicValue<Big>,
     style:CSSProperties | undefined,
     pinClass:string,
@@ -85,7 +85,7 @@ const PinInput = (
       }),{
         context:{
           placeholder: placeholder?.value ? placeholder.value.toString() : "○" ,
-          value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute.value?.toString(), inputType),
+          value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute?.value?.toString(), inputType),
           mask : inputMask.value,
           dir : dir.value ? "rtl" : "ltr",
         }
@@ -107,7 +107,7 @@ const PinInput = (
 						Array.from<string>({length:inputCount.value.toNumber()})
 						.fill("")
 						.map((_item:string,index:number)=>  
-						<input {...api.getInputProps({ index: index })} className={`pin-input ${inputSize} `} />
+						<input {...api.getInputProps({ index: index })} className={`pin-input ${inputSize} `}  key={index}/>
 						)
 					:<Fragment></Fragment>
 					}

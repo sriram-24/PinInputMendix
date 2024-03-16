@@ -15,14 +15,14 @@ export const updateInputValues = (
         const arra = defaultString.trim().replaceAll(" ","").split("")
         if( stringType=="numeric" && numericRegEx.test(defaultString)){
             
-            arra.forEach((item,index)=> defaultArray[index] = item)
+            arra.forEach((item,index)=> (index in defaultArray) ? defaultArray[index] = item : null)
         }
         else if(stringType=="alphabetic" && alphabeticRegEx.test(defaultString)){
            
-            arra.forEach((item,index)=> defaultArray[index] = item)
+            arra.forEach((item,index)=> (index in defaultArray) ? defaultArray[index] = item : null)
         }
         else if(stringType=="alphanumeric" && alphaNumericRegEx.test(defaultString)){
-            arra.forEach((item,index)=> defaultArray[index] = item)
+            arra.forEach((item,index)=> (index in defaultArray) ? defaultArray[index] = item : null)
         }
         else{
             return defaultArray

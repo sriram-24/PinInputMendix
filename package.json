@@ -34,7 +34,8 @@
     "@types/jasmine": "^3.6.9",
     "@types/jest": "^29.0.0",
     "@types/react-test-renderer": "~18.0.0",
-    "cypress": "^10.10.0"
+    "cypress": "^10.10.0",
+    "pretty-format": "^29.7.0"
   },
   "dependencies": {
     "@zag-js/core": "^0.38.1",
