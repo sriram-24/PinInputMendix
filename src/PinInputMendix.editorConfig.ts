@@ -1,7 +1,7 @@
 import { PinInputMendixPreviewProps } from "../typings/PinInputMendixProps";
-import {hidePropertiesIn} from '@mendix/pluggable-widgets-tools';
+import { hidePropertiesIn } from "@mendix/pluggable-widgets-tools";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const logo: string = require("./assets/pin_input_image.svg").default;
-
 
 export type Platform = "web" | "desktop";
 
@@ -111,10 +111,10 @@ export function getProperties(
     // if (values.myProperty === "custom") {
     //     delete defaultProperties.properties.myOtherProperty;
     // }
-    
-   if(!values.isClearButtonEnabled){
-    hidePropertiesIn(defaultProperties,values,["clearButtonLabel", "clearButtonIcon"])
-   }
+
+    if (!values.isClearButtonEnabled) {
+        hidePropertiesIn(defaultProperties, values, ["clearButtonLabel", "clearButtonIcon"]);
+    }
     return defaultProperties;
 }
 
@@ -130,31 +130,33 @@ export function check(values: PinInputMendixPreviewProps): Problem[] {
         });
     }
     */
-   const clearButtonError ={
-    property:"clearButtonLabel",
-    message:`Either the clear button label or icon should be present if the clear button is enabled.`
-} 
-   if(values.isClearButtonEnabled){
-    if((values.clearButtonLabel == null || values.clearButtonLabel == "") || (values.clearButtonIcon == undefined)){
-        errors.push(clearButtonError)
+    const clearButtonError = {
+        property: "clearButtonLabel",
+        message: `Either the clear button label or icon should be present if the clear button is enabled.`
+    };
+    if (values.isClearButtonEnabled) {
+        if (
+            values.clearButtonLabel === null ||
+            values.clearButtonLabel === "" ||
+            values.clearButtonIcon === undefined
+        ) {
+            errors.push(clearButtonError);
+        }
+        if (values.clearButtonIcon) {
+            errors.find((val, index) => (val.property === clearButtonError.property ? errors.splice(index, 1) : null));
+        }
     }
-    if(values.clearButtonIcon){
-        errors.find((val,index) => {
-            val.property == clearButtonError.property ? errors.splice(index,1) : null
-        })
-    }
-   }
     return errors;
 }
 
 export function getPreview(): PreviewProps {
     // Customize your pluggable widget appearance for Studio Pro.
-    const image = logo
+    const image = logo;
     return {
-        type:'Image',
-        document:decodeURIComponent(image.replace("data:image/svg+xml,", "")),
-        width:100
-    }
+        type: "Image",
+        document: decodeURIComponent(image.replace("data:image/svg+xml,", "")),
+        width: 100
+    };
 }
 
 export function getCustomCaption(_values: PinInputMendixPreviewProps, _platform: Platform): string {

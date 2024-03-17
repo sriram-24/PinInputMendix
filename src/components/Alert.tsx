@@ -1,9 +1,9 @@
 import { FunctionComponent, createElement, CSSProperties } from "react";
 import classNames from "classnames";
 export interface AlertProps {
-    alertStyle?:  "danger";
-    children:any,
-    styles?: CSSProperties 
+    alertStyle?: "danger";
+    children: any;
+    styles?: CSSProperties;
 }
 export const Alert: FunctionComponent<AlertProps> = ({ alertStyle, children, styles }) =>
     children ? (

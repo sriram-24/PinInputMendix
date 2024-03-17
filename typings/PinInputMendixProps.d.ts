@@ -58,7 +58,11 @@ export interface PinInputMendixPreviewProps {
     inputCountException: string;
     inputNotDefinedException: string;
     clearButtonLabel: string;
-    clearButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
+    clearButtonIcon:
+        | { type: "glyph"; iconClass: string }
+        | { type: "image"; imageUrl: string; iconUrl: string }
+        | { type: "icon"; iconClass: string }
+        | undefined;
     onChangeAction: {} | null;
     onCompleteAction: {} | null;
 }
