@@ -7,8 +7,6 @@ Place your custom CSS here
     gap: 10px;
   }
    .pin-input-root .pin-input{
-  
-    
     border: 1px solid #d5d5d5;
     text-align: center;
     border-color: #d5d5d5 !important;
@@ -51,13 +49,35 @@ Place your custom CSS here
    }
 
    .pin-input-root .pin-clear-btn{
-    background: #fff;
+    background-color: rgb(240, 244, 248);
     outline: 0;
-    border-radius: 50px;
-    border: 1px solid #d5d5d5;
+    border: 1px solid rgba(11, 107, 203, 0.15);
     padding: 8px 14px;
     border-radius: 8px;
+    color: rgb(99, 107, 116);
+    
    }
    .pin-input-root .pin-clear-btn:hover{
-    background: #f3f3f3;
+    background-color: rgb(221, 231, 238);
+    color: rgb(23, 26, 28);
+    transition: all ease;
+   }
+   .pin-input-root .pin-clear-btn:active{
+    background-color: rgb(205, 215, 225);
+    color: rgb(50, 56, 62);
+    transition: all ease;
+   }
+   .pin-input-root .pin-clear-btn:hover:disabled{
+    background-color: rgb(251, 252, 254);
+    color: rgb(159, 166, 173);
+   }
+   
+   .pin-input-root .icon-color{
+    color: rgb(99, 107, 116);
+   }
+   .pin-input-root .pin-clear-btn:hover .icon-color{
+    color: rgb(23, 26, 28);
+   }
+   .pin-input-root .pin-clear-btn:active .icon-color{
+    color: rgb(50, 56, 62);
    }

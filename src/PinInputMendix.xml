@@ -49,7 +49,10 @@
 	                <returnType type="Boolean" />
                 </property>
                 
-            </propertyGroup>    
+            </propertyGroup> 
+            <propertyGroup caption="system">
+                <systemProperty key="Editability"/>
+            </propertyGroup>   
         </propertyGroup>
         <propertyGroup caption="Advanced">
             <propertyGroup caption="common">

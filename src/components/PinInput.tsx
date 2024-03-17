@@ -92,6 +92,7 @@ const PinInput = (
           value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute?.value?.toString(), inputType),
           mask : inputMask.value ? inputMask.value : false,
           dir : dir.value =="rtl" ? "rtl" : "ltr",
+          disabled:pinInputAttribute?.readOnly
         }
       }
     )
@@ -121,11 +122,11 @@ const PinInput = (
 	  }
       {
 		clearButtonEnabled ? 
-			<button onClick={api.clearValue} className='pin-clear-btn'>
+			<button onClick={api.clearValue} className='pin-clear-btn' disabled = {pinInputAttribute?.readOnly}>
 				{
 					clearIcon?.value ? 
 						clearIcon?.value?.type == 'glyph' || clearIcon?.value?.type == 'icon'  ?
-							<span className={`${clearIcon.value.iconClass}`}></span> 
+							<span className={`${clearIcon.value.iconClass} icon-color`}></span> 
 						:	<img src={`${clearIcon?.value?.iconUrl}`}></img>
 					: <Fragment></Fragment>
 				}
