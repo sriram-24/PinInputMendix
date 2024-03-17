@@ -4,9 +4,10 @@
         xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Pin Input</name>
-    <description>My widget description</description>
+    <description>A mendix widget for Pin Input.</description>
+    <studioProCategory>Input elements</studioProCategory>
     <helpUrl>https://github.com/sriram-24/PinInputMendix/blob/main/README.md</helpUrl>
-    <icon/>
+    <icon>iVBORw0KGgoAAAANSUhEUgAAABcAAAAICAYAAAASqmTuAAAACXBIWXMAAAEUAAABFAH7OeD/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFASURBVHgBrVFRTsJAEH2zLQr6U2/QG9gjcAPYGPx1o5gYE02PgDdoCCZ+KOKXCcQUbsAR9AZ4gxrBgpRdp8UYMPzRl2wy+3bmzb4ZAuO8O/YWRFXkASFM+6h0k8UXYeye9r585AT1HLv1l0kjjemsO+k8HO+r1QSfG2qQz2fYkrv9lLsKY2UANwE6d7I08kPjJGJ2IiCiZmXnabW+3ovLQAJhCKP/3VlANWWR3WgvFflt5rRkqWHz2zJn6ifaDLRevF8PZpW1env6qmF5YrM541yG3x4bcwJJETCNrIwbe38ZoEjAcoRNh1rrj00qggiuejTOKmmDAoE5j8AE6T2QByyEjsW/sVHMuFtZzHJ0Yt7Y0XBNdF6o6oT6lC7AKhi/YFGQzhJbQvU+y+zIa9f2AsoIbiBsrZADeMHD+9rSyQ+pKH9JCpgkdwAAAABJRU5ErkJggg==</icon>
     <properties>
         <propertyGroup caption="General">
             <propertyGroup caption="Data Source">
@@ -65,7 +66,7 @@
                         
                     </enumerationValues>
                 </property>
-                <property key="rtl" type="expression" defaultValue="ltr">
+                <property key="rtl" type="expression" defaultValue="'ltr'">
                     <caption>Dir</caption>
                     <description>Direction of the input, whether from left to right or right to left. Must be string("rtl" or "ltr"). Default:"ltr"</description>
                     <returnType type="String" />
