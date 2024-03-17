@@ -49,3 +49,10 @@ If the clear button is enabled any one of the below option is required.
 ## Issues, suggestions and feature requests
 
 Found an issue, suggestions or feature request? [Raise here](https://github.com/sriram-24/PinInputMendix/issues)
+
+## Screenshots
+![General Configuration](https://github.com/sriram-24/PinInputMendix/blob/main/screenshots/editor_1.png?raw=true)
+
+![Advanced Configuration](https://github.com/sriram-24/PinInputMendix/blob/main/screenshots/editor_2.png?raw=true)
+
+![Preview](https://github.com/sriram-24/PinInputMendix/blob/main/screenshots/preview.png?raw=true)
