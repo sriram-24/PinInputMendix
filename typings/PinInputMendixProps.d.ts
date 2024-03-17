@@ -24,10 +24,12 @@ export interface PinInputMendixContainerProps {
     inputType: InputTypeEnum;
     inputMask: DynamicValue<boolean>;
     otpMode: OtpModeEnum;
-    rtl: DynamicValue<boolean>;
+    rtl: DynamicValue<string>;
     blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
     inputStyle: InputStyleEnum;
+    inputCountException?: DynamicValue<string>;
+    inputNotDefinedException?: DynamicValue<string>;
     clearButtonLabel?: DynamicValue<string>;
     clearButtonIcon?: DynamicValue<WebIcon>;
     onChangeAction?: ActionValue;
@@ -53,6 +55,8 @@ export interface PinInputMendixPreviewProps {
     blurOnComplete: boolean;
     isClearButtonEnabled: boolean;
     inputStyle: InputStyleEnum;
+    inputCountException: string;
+    inputNotDefinedException: string;
     clearButtonLabel: string;
     clearButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     onChangeAction: {} | null;

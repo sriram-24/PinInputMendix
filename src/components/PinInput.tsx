@@ -19,14 +19,16 @@ export interface PinInputProps{
     inputType : InputTypeEnum,
     otpmode : OtpModeEnum,
     inputMask: DynamicValue<boolean>
-    dir:DynamicValue<boolean>,
+    dir:DynamicValue<string>,
     clearButtonEnabled : boolean
     clearLabel : DynamicValue<string> | undefined ,
     clearIcon : DynamicValue<WebIcon> | undefined,
     inputSize : InputStyleEnum,
     blurOnComplete : boolean,
     onChangeAction: ActionValue | undefined,
-    onCompleteAction: ActionValue | undefined
+    onCompleteAction: ActionValue | undefined,
+    inputCountException: DynamicValue<string> | undefined,
+    inputNotDefinedException: DynamicValue<string> | undefined
 }
 
 const PinInput = (
@@ -49,7 +51,9 @@ const PinInput = (
 	blurOnComplete, 
 	onChangeAction,
 	onCompleteAction, 
-	pinInputAttribute 
+	pinInputAttribute,
+  inputCountException,
+  inputNotDefinedException
 }:PinInputProps
   
   ) =>{
@@ -86,8 +90,8 @@ const PinInput = (
         context:{
           placeholder: placeholder?.value ? placeholder.value.toString() : "○" ,
           value: updateInputValues(inputCount.value?.toNumber(), pin, pinInputAttribute?.value?.toString(), inputType),
-          mask : inputMask.value,
-          dir : dir.value ? "rtl" : "ltr",
+          mask : inputMask.value ? inputMask.value : false,
+          dir : dir.value =="rtl" ? "rtl" : "ltr",
         }
       }
     )
@@ -107,13 +111,13 @@ const PinInput = (
 						Array.from<string>({length:inputCount.value.toNumber()})
 						.fill("")
 						.map((_item:string,index:number)=>  
-						<input {...api.getInputProps({ index: index })} className={`pin-input ${inputSize} `}  key={index}/>
+						<input {...api.getInputProps({ index: index })} className={`pin-input ${inputSize} `}  key={index} autoComplete={otpmode? 'one-time-code' : undefined}/>
 						)
 					:<Fragment></Fragment>
 					}
 				</div>
-			: <Alert styles={alertStyles}>Input count should be greater than 0.</Alert>
-		:<Alert styles={alertStyles}>Input count is not defined.</Alert>
+			: <Alert styles={alertStyles}>{inputCountException?.value || 'Input count should be greater than 0.'}</Alert>
+		:<Alert styles={alertStyles}>{inputNotDefinedException?.value || 'Input count is not defined.'}</Alert>
 	  }
       {
 		clearButtonEnabled ? 

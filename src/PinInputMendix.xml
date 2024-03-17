@@ -5,13 +5,14 @@
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Pin Input</name>
     <description>My widget description</description>
+    <helpUrl>https://github.com/sriram-24/PinInputMendix/blob/main/README.md</helpUrl>
     <icon/>
     <properties>
         <propertyGroup caption="General">
             <propertyGroup caption="Data Source">
                 <property key="pinInputAttribute" type="attribute">
                     <caption>Attribute</caption>
-                    <description>Attribute to store the value.</description>
+                    <description>Choose an attribute to store the entered pin values. Must be a string.</description>
                     <attributeTypes>
                         <attributeType name="String"/>
                     </attributeTypes>
@@ -21,12 +22,12 @@
                 
                 <property key="inputCount" type="expression" defaultValue="3">
 	                <caption>Input count</caption>
-	                <description>Number of input for pin.</description>
+	                <description>Number of input fields displayed for the PIN. Must be an Integer. Default : 3</description>
 	                <returnType type="Integer" />
                 </property>
-                <property key="placeholder" type="textTemplate" required="false">
+                <property key="placeholder" type="textTemplate" required="false" >
                     <caption>Placholder</caption>
-                    <description>Placeholder to display in input.</description>
+                    <description>Placeholder text to display on each input field. Must be a string. Default : ○</description>
                     <translations>
                         <translation lang="en_US">○</translation>
                         <translation lang="ar_BH">○</translation>
@@ -35,7 +36,7 @@
                 </property>
               	<property key="inputType" type="enumeration" defaultValue="numeric">
 		            <caption>Input Type</caption>
-		            <description>Input type is to restrict other characters than specified.</description>
+		            <description>Type of input is allowed for the user to enter in the input fields.  Default : numeric</description>
 		            <enumerationValues>
 			            <enumerationValue key="numeric">Numeric</enumerationValue>
 			            <enumerationValue key="alphanumeric">Alphanumeric</enumerationValue>
@@ -44,50 +45,72 @@
 	            </property>
                 <property key="inputMask" type="expression" defaultValue="false">
 	                <caption>Input Mask</caption>
-	                <description>Hides the input entered in the input.</description>
+	                <description>Masks the characters entered by the user. Must a boolean. Default : false</description>
 	                <returnType type="Boolean" />
                 </property>
                 
             </propertyGroup>    
         </propertyGroup>
         <propertyGroup caption="Advanced">
-            <property key="otpMode" type="enumeration" defaultValue="No">
-                <caption>OTP Mode</caption>
-                <description>Specifies whether autocomplete otp from messages.</description>
-                <enumerationValues>
-                    <enumerationValue key="Yes">Yes</enumerationValue>
-                    <enumerationValue key="No">No</enumerationValue>
-                    
-                </enumerationValues>
-            </property>
-            <property key="rtl" type="expression" defaultValue="false">
-                <caption>Direction</caption>
-                <description>Specifies the direction of input, whether from ltr or rtl. Set to true if the direction is rtl.</description>
-                <returnType type="Boolean" />
-            </property>
-            <property key="blurOnComplete" type="boolean" defaultValue="false">
-                <caption>Blur on complete</caption>
-                <description>Exits the input when all the fields are filled.</description>
-            </property>
-            <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
-                <caption>Clear button enabled?</caption>
-                <description>Show clear button or not</description>
-            </property>
-            <property key="inputStyle" type="enumeration" defaultValue="md">
-                <caption>Input Size</caption>
-                <description>Specifies the input size. eg : sm - for small input </description>
-                <enumerationValues>
-                    <enumerationValue key="xs">xs</enumerationValue>
-                    <enumerationValue key="sm">sm</enumerationValue>
-                    <enumerationValue key="md">md</enumerationValue>
-                    <enumerationValue key="lg">lg</enumerationValue>
-                </enumerationValues>
-            </property>
+            <propertyGroup caption="common">
+                <property key="otpMode" type="enumeration" defaultValue="No">
+                    <caption>OTP Mode</caption>
+                    <description>Autocomplete suggestion for OTP in mobile devices. Must be Yes/No. Default : No</description>
+                    <enumerationValues>
+                        <enumerationValue key="Yes">Yes</enumerationValue>
+                        <enumerationValue key="No">No</enumerationValue>
+                        
+                    </enumerationValues>
+                </property>
+                <property key="rtl" type="expression" defaultValue="ltr">
+                    <caption>Dir</caption>
+                    <description>Direction of the input, whether from left to right or right to left. Must be string("rtl" or "ltr"). Default:"ltr"</description>
+                    <returnType type="String" />
+                </property>
+                <property key="blurOnComplete" type="boolean" defaultValue="false">
+                    <caption>Blur on complete</caption>
+                    <description>Exits focus of the input field after all the input values are filled. Must be boolean. Default : false</description>
+                </property>
+                <property key="isClearButtonEnabled" type="boolean" defaultValue="false">
+                    <caption>Clear button enabled?</caption>
+                    <description>Enable/Disable clear button to clear all the inputs entered by the  user. Must be Yes/No. Default : No</description>
+                </property>
+                <property key="inputStyle" type="enumeration" defaultValue="md">
+                    <caption>Input Size</caption>
+                    <description>Size of each input fields. Choosen between `xs`, `sm`, `md`, `lg`. Default: md</description>
+                    <enumerationValues>
+                        <enumerationValue key="xs">xs</enumerationValue>
+                        <enumerationValue key="sm">sm</enumerationValue>
+                        <enumerationValue key="md">md</enumerationValue>
+                        <enumerationValue key="lg">lg</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Restriction texts">
+                
+                <property key="inputCountException" type="textTemplate" required="false"  >
+                    <caption>Input Count</caption>
+                    <description>Exception string to display when the count is less than or equal to 0.</description>
+                    <translations>
+                        <translation lang="en_US">Input count should be greater than 0.</translation>
+                        <translation lang="ar_BH">Input count should be greater than 0.</translation>
+		
+	                </translations>
+                </property>
+                <property key="inputNotDefinedException" type="textTemplate" required="false" >
+                    <caption>Input Count (empty)</caption>
+                    <description>Exception string to display when the count is empty.</description>
+                    <translations>
+                        <translation lang="en_US">Input count is not defined.</translation>
+                        <translation lang="ar_BH">Input count is not defined.</translation>
+	                </translations>
+                </property>
+            </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Clear Button">
             <property key="clearButtonLabel" type="textTemplate" required="false" >
                     <caption>Label</caption>
-                    <description>Label string for clear button.</description>
+                    <description>Label to display inside the clear button. Must be a string.</description>
                     <translations>
                         <translation lang="en_US">Clear</translation>
                         <translation lang="ar_BH">Clear</translation>
@@ -96,17 +119,17 @@
                 </property>
                 <property key="clearButtonIcon" type="icon" required="false">
 	                <caption>Icon</caption>
-	                <description>Clear button icon</description>
+	                <description>Icon to display inside the clear button.</description>
                 </property>
         </propertyGroup>
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action">
                 <caption>On Change</caption>
-                <description>Action to be executed on changing the pin input.</description>
+                <description>Event triggered when each input field is changed.</description>
             </property>
             <property key="onCompleteAction" type="action">
                 <caption>On Complete</caption>
-                <description>Action to be executed on completing the pin input.</description>
+                <description>Event triggered when all the input fields are filled. It is triggered only at the last input field.</description>
             </property>
         </propertyGroup>
     </properties>
