@@ -37,6 +37,7 @@ Place your custom CSS here
   
    .pin-input-root .input-field-wrapper{
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
    }
    .pin-input:focus{
@@ -55,6 +56,7 @@ Place your custom CSS here
     padding: 8px 14px;
     border-radius: 8px;
     color: rgb(99, 107, 116);
+    max-height: 40px;
     
    }
    .pin-input-root .pin-clear-btn:hover{
