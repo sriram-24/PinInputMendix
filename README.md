@@ -50,6 +50,9 @@ If the clear button is enabled any one of the below option is required.
 
 Found an issue, suggestions or feature request? [Raise here](https://github.com/sriram-24/PinInputMendix/issues)
 
+## Demo
+[Click here](https://pininputtest-sandbox.mxapps.io/)
+
 ## Screenshots
 ![General Configuration](https://github.com/sriram-24/PinInputMendix/blob/main/screenshots/editor_1.png?raw=true)
 
