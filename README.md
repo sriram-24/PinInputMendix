@@ -1,7 +1,7 @@
 # Pin Input
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
-Pin Input is a widget used for enterning sequence of inputs in a separate input boxes. This widget will provide a modern look and feel for enterning the OTP or PIN inputs instead of using a plain input text widget. It is built on top of a [@zagjs/pin-input](https://zagjs.com/components/react/pin-input) react component.
+Pin Input is a widget used for entering sequence of inputs in a separate input boxes. This widget will provide a modern look and feel for enterning the OTP or PIN inputs instead of using a plain input text widget. It is built on top of a [@zagjs/pin-input](https://zagjs.com/components/react/pin-input) react component.
 
 ## Features
 
