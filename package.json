@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "config": {
-    "projectPath": "C:/Users/srira/Documents/Mendix/Testing-widgets",
+    "projectPath": "C:/Users/srira/OneDrive/Documents/Mendix/pininput/",
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },
@@ -33,6 +33,7 @@
     "@types/enzyme": "^3.10.8",
     "@types/jasmine": "^3.6.9",
     "@types/jest": "^29.0.0",
+    "@types/lodash": "^4.17.7",
     "@types/react-test-renderer": "~18.0.0",
     "cypress": "^13.7.0",
     "pretty-format": "^29.7.0"
@@ -41,7 +42,8 @@
     "@zag-js/core": "^0.38.1",
     "@zag-js/pin-input": "^0.38.1",
     "@zag-js/react": "^0.38.1",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.21"
   },
   "resolutions": {
     "react": "18.2.0",
