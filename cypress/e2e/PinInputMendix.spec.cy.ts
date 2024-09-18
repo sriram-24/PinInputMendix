@@ -1,6 +1,6 @@
 describe("PinInputMendix", () => {
     it("changes caption when attribute value is changed", () => {
-    cy.visit("http://192.168.240.1:8080/");
+    cy.visit("http://127.0.0.1:8080/");
    
     // testing input count
     cy.get('.mx-name-pinInputMendix1').find('input').should('have.length', 3);
