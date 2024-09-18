@@ -65,7 +65,7 @@ const PinInput: React.FunctionComponent<PinInputProps> = ({
     };
 
     const value = pinInputAttribute?.value || undefined;
-    
+
     function debounce(cb: Function, delay = 1000): (details: pinInput.ValueChangeDetails) => void {
         let timeout: any;
 
