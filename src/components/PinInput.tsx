@@ -30,8 +30,8 @@ export interface PinInputProps {
     onCompleteAction: ActionValue | undefined;
     inputCountException: DynamicValue<string> | undefined;
     inputNotDefinedException: DynamicValue<string> | undefined;
-    onChangeDelay : number;
-    onCompleteDelay : number;
+    onChangeDelay: number;
+    onCompleteDelay: number;
 }
 
 const PinInput: React.FunctionComponent<PinInputProps> = ({
@@ -65,67 +65,55 @@ const PinInput: React.FunctionComponent<PinInputProps> = ({
     };
 
     const value = pinInputAttribute?.value || undefined;
-    console.log(value);
-    function debounce(cb : Function, delay = 1000) {
-        let timeout :any;
-      
-        return (...args : any) => {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => {
-            cb(...args);
-          }, delay);
-        };
-      }
+    
+    function debounce(cb: Function, delay = 1000): (details: pinInput.ValueChangeDetails) => void {
+        let timeout: any;
 
-    const [pin, setPin] = useState<string[]>(updateInputValues(inputCount.value?.toNumber(),[],value,inputType));
+        return (...args: any) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                cb(...args);
+            }, delay);
+        };
+    }
+
+    const [pin, setPin] = useState<string[]>(updateInputValues(inputCount.value?.toNumber(), [], value, inputType));
 
     const updatePinAttributeValue = (value: string): boolean => {
         onChangeValue(value);
         return true;
     };
 
-    
-    useEffect(() => { 
-        setPin(updateInputValues(inputCount.value?.toNumber(),[],value,inputType))
+    useEffect(() => {
+        setPin(updateInputValues(inputCount.value?.toNumber(), [], value, inputType));
+    }, [inputCount.value]);
 
-      return () => {
-        return
-      }
-    }, [inputCount.value])
-
-    useEffect(() => { 
-        let arr = value?.split("")
-        if(inputCount.value && arr){
-            let newLength = inputCount.value.toNumber() - arr?.length
+    useEffect(() => {
+        const updatedArray = value?.split("");
+        if (inputCount.value && updatedArray) {
+            const newLength = inputCount.value.toNumber() - updatedArray?.length;
             for (let index = 0; index < newLength; index++) {
-                arr.push("")
-                
+                updatedArray.push("");
             }
-        setPin(arr)
+            setPin(updatedArray);
         }
-        
-      return () => {
-        return
-      }
-    }, [pinInputAttribute?.value ])
+    }, [pinInputAttribute?.value]);
 
-    
     const [state, send] = useMachine(
         pinInput.machine({
             id: name,
             type: inputType,
             otp: otpmode === "Yes",
             blurOnComplete,
-            onValueChange : debounce((details: pinInput.ValueChangeDetails) =>{
+            onValueChange: debounce((details: pinInput.ValueChangeDetails) => {
                 setPin(details.value);
                 // setPin(updateInputValues(inputCount.value?.toNumber(),[],value,inputType))
                 updatePinAttributeValue(details.valueAsString);
                 onChangeAction?.execute();
-            },onChangeDelay),
-            onValueComplete : debounce((_details: pinInput.ValueChangeDetails) => {
+            }, onChangeDelay),
+            onValueComplete: debounce((_details: pinInput.ValueChangeDetails) => {
                 onCompleteAction?.execute();
-                
-            },onCompleteDelay)
+            }, onCompleteDelay)
         }),
         {
             context: {
