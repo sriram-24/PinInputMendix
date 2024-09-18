@@ -44,7 +44,9 @@ If the clear button is enabled any one of the below option is required.
 - `Icon` - Icon to display inside the clear button.
 #### Events
 - `On Change` - Event triggered when each input field is changed.
+- `Delay` - Time to wait before triggering the On Change action (In Milliseconds). Default : 300
 - `On Complete` - Event triggered when all the input fields are filled. It is triggered only at the last input field.
+- `Delay` - Time to wait before triggering the On Complete action (In Milliseconds). Default : 500
 
 ## Issues, suggestions and feature requests
 
