@@ -127,14 +127,26 @@
                 </property>
         </propertyGroup>
         <propertyGroup caption="Events">
-            <property key="onChangeAction" type="action">
-                <caption>On Change</caption>
-                <description>Event triggered when each input field is changed.</description>
-            </property>
-            <property key="onCompleteAction" type="action">
-                <caption>On Complete</caption>
-                <description>Event triggered when all the input fields are filled. It is triggered only at the last input field.</description>
-            </property>
+            <propertyGroup caption="On Change Event">
+                <property key="onChangeAction" type="action">
+                    <caption>On Change</caption>
+                    <description>Event triggered when each input field is changed.</description>
+                </property>
+                <property key="onChangeDelay" type="integer" defaultValue="300">
+                    <caption>Delay</caption>
+                    <description>Time to wait before triggering the On Change action (In Milliseconds). Default : 300</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="On Complete Event">
+                <property key="onCompleteAction" type="action">
+                    <caption>On Complete</caption>
+                    <description>Event triggered when all the input fields are filled. It is triggered only at the last input field.</description>
+                </property>
+                <property key="onCompleteDelay" type="integer" defaultValue="500">
+                    <caption>Delay</caption>
+                    <description>Time to wait before triggering the On Complete action (In Milliseconds). Default : 500</description>
+                </property>
+            </propertyGroup>
         </propertyGroup>
     </properties>
 </widget>

@@ -33,7 +33,9 @@ export interface PinInputMendixContainerProps {
     clearButtonLabel?: DynamicValue<string>;
     clearButtonIcon?: DynamicValue<WebIcon>;
     onChangeAction?: ActionValue;
+    onChangeDelay: number;
     onCompleteAction?: ActionValue;
+    onCompleteDelay: number;
 }
 
 export interface PinInputMendixPreviewProps {
@@ -60,5 +62,7 @@ export interface PinInputMendixPreviewProps {
     clearButtonLabel: string;
     clearButtonIcon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     onChangeAction: {} | null;
+    onChangeDelay: number | null;
     onCompleteAction: {} | null;
+    onCompleteDelay: number | null;
 }

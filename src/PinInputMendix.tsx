@@ -38,6 +38,8 @@ export class PinInputMendix extends Component<PinInputMendixContainerProps> {
                     pinInputAttribute={this.props.pinInputAttribute}
                     inputCountException={this.props.inputCountException}
                     inputNotDefinedException={this.props.inputNotDefinedException}
+                    onChangeDelay={this.props.onChangeDelay}
+                    onCompleteDelay={this.props.onCompleteDelay}
                 />
 
                 <Alert>{validationFeedback}</Alert>
