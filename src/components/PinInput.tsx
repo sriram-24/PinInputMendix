@@ -1,4 +1,4 @@
-import React, { createElement, Fragment, CSSProperties, useState, useEffect } from "react";
+import React, { createElement, Fragment, CSSProperties, useState, useEffect,useRef } from "react";
 import { DynamicValue, ValueStatus, WebIcon, ActionValue, EditableValue } from "mendix";
 import { normalizeProps, useMachine } from "@zag-js/react";
 import * as pinInput from "@zag-js/pin-input";
@@ -88,17 +88,6 @@ const PinInput: React.FunctionComponent<PinInputProps> = ({
         setPin(updateInputValues(inputCount.value?.toNumber(), [], value, inputType));
     }, [inputCount.value]);
 
-    useEffect(() => {
-        const updatedArray = value?.split("");
-        if (inputCount.value && updatedArray) {
-            const newLength = inputCount.value.toNumber() - updatedArray?.length;
-            for (let index = 0; index < newLength; index++) {
-                updatedArray.push("");
-            }
-            setPin(updatedArray);
-        }
-    }, [pinInputAttribute?.value]);
-
     const [state, send] = useMachine(
         pinInput.machine({
             id: name,
@@ -127,9 +116,35 @@ const PinInput: React.FunctionComponent<PinInputProps> = ({
     );
 
     const api = pinInput.connect(state, send, normalizeProps);
+    useEffect(() => {
+       const updatedArray = value?.split("");
+        if (inputCount.value && updatedArray) {
+            const newLength = inputCount.value.toNumber() - updatedArray?.length;
+            for (let index = 0; index < newLength; index++) {
+                updatedArray.push("");
+            }
+            setPin(updatedArray);
+            if(value){
+                let index = value?.length
+                console.log(index);
+                
+                focusInputAtIndex(index)
+               }
+        }
+        
+      }, [send,pinInputAttribute?.value])
+
 
     const rootClasses = classNames("pin-input-root", pinClass);
 
+    const inputRefs= useRef<(HTMLInputElement | null)[]>([])
+
+    const focusInputAtIndex = (index :number) => {
+      if (inputRefs.current[index] ) {
+        inputRefs?.current[index]?.focus()
+      }
+    }
+    
     return (
         <div className={rootClasses} style={style} tabIndex={tabIndex}>
             {inputCount.value ? (
@@ -144,6 +159,9 @@ const PinInput: React.FunctionComponent<PinInputProps> = ({
                                         className={`pin-input ${inputSize} `}
                                         key={index}
                                         autoComplete={otpmode ? "one-time-code" : undefined}
+                                        ref={(el) => {
+                                            inputRefs.current[index] = el 
+                                          }}
                                     />
                                 ))
                         ) : (
