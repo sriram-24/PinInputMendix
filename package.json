@@ -1,7 +1,7 @@
 {
   "name": "pininputmendix",
   "widgetName": "PinInputMendix",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pin Input is a widget used for enterning sequence of inputs in a separate input boxes. This widget will provide a modern look and feel for enterning the OTP or PIN inputs instead of using a plain input text widget.",
   "copyright": "Sriram",
   "author": "Sriram Manoharan",
