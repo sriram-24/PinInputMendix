@@ -10,7 +10,7 @@ node_modules
 *.launch
 mxproject
 coverage
-
+/testProject
 **/results
 mendixProject
 **/e2e/diffs

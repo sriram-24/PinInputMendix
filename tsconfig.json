@@ -1,7 +1,10 @@
 {
   "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base",
   "compilerOptions": {
-    "baseUrl": "./"
+    "baseUrl": "./",
+	"allowUnusedLabels": true,
+	"noUnusedParameters": false,
+	"noUnusedLocals": false
   },
   "include": ["./src", "./typings"]
 }

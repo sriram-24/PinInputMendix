@@ -1,4 +1,4 @@
-import { ReactElement, createElement, Fragment } from "react";
+import { ReactElement, createElement, Fragment, useId } from "react";
 import * as pinInput from "@zag-js/pin-input";
 import { PinInputMendixPreviewProps } from "../typings/PinInputMendixProps";
 import { normalizeProps, useMachine } from "@zag-js/react";
@@ -10,20 +10,22 @@ export function Preview({
     clearButtonLabel,
     isClearButtonEnabled
 }: PinInputMendixPreviewProps): ReactElement {
-    const [state, send] = useMachine(
-        pinInput.machine({
-            id: "editor-1",
-            placeholder: "○"
-        })
-    );
+    // const [state, send] = useMachine(
+    //     pinInput.machine({
+    //         id: "editor-1",
+    //         placeholder: "○"
+    //     })
+    // );
+		const service = useMachine(pinInput.machine, { id: useId() }) 
+	
     const inputCount = 3;
-    const api = pinInput.connect(state, send, normalizeProps);
+    const api = pinInput.connect(service, normalizeProps);
 
     const rootClasses = classNames("pin-input-root", pinclass);
 
     return (
         <div className={rootClasses}>
-            <div {...api.rootProps} className="input-field-wrapper">
+            <div {...api.getRootProps()} className="input-field-wrapper">
                 {Array.from<string>({ length: inputCount })
                     .fill("")
                     .map((_item: string, index: number) => (

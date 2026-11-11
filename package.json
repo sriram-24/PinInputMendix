@@ -14,7 +14,7 @@
     "mendixHost": "http://localhost:8080",
     "developmentPort": 3000
   },
-  "packagePath": "rapiddatatech",
+  "packagePath": "opensource",
   "scripts": {
     "start": "pluggable-widgets-tools start:server",
     "dev": "pluggable-widgets-tools start:web",
@@ -35,14 +35,14 @@
     "@types/jest": "^29.0.0",
     "@types/lodash": "^4.17.7",
     "@types/react-test-renderer": "~18.0.0",
-    "cypress": "^13.7.0",
+    "cypress": "^16.3.0",
     "pretty-format": "^29.7.0"
   },
   "dependencies": {
-    "@zag-js/core": "^0.38.1",
-    "@zag-js/pin-input": "^0.38.1",
-    "@zag-js/react": "^0.38.1",
-    "classnames": "^2.2.6",
+    "@zag-js/core": "^1.47.0",
+    "@zag-js/pin-input": "^1.47.0",
+    "@zag-js/react": "^1.47.0",
+    "classnames": "^2.5.1",
     "lodash": "^4.17.21"
   },
   "resolutions": {
@@ -51,6 +51,6 @@
   },
   "overrides": {
     "react": "18.2.0",
-    "react-native": "0.72.7"
+    "react-native": "0.72.17"
   }
 }

@@ -5,7 +5,7 @@
             <widgetFile path="PinInputMendix.xml"/>
         </widgetFiles>
         <files>
-            <file path="rapiddatatech/pininputmendix"/>
+            <file path="opensource/pininputmendix"/>
         </files>
     </clientModule>
 </package>
